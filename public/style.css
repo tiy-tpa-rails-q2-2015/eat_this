@@ -1,9 +1,26 @@
 body {
   font-family: 'PT serif', serif;
+  padding: 0;
+  margin: 0;
+  background-color: #C9D643;
+
 }
 
 h1,h2,h3 {
   font-family: 'PT Sans', sans-serif;
+}
+
+header {
+  background-color: #FA8737;
+  padding: 10px;
+
+
+}
+
+#container {
+  width: 960px;
+  margin: auto; 
+
 }
 
 ul {
@@ -24,11 +41,23 @@ ul li:last-child {
 }
 
 #sidebar {
-  width: 300px;
+  width: 25%;
   float: left;
+}
+
+#main {
+  width: 75%;
+  float: left;
+
+
 }
 
 footer {
   clear: left;
+  background-color: #415676;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  
 }
 
