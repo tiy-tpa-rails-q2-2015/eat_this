@@ -11,48 +11,31 @@
   </header>
   <div id="container">
     <ul>
-      <li>Downtown St Pete</li>
-      <li>Seminole Heights</li>
-      <li>Ybor</li>
-      <li>South Tampa</li>
-      <li>Clearwater</li>
-      <li>Treasure Island</li>
+      <% @data["neighborhoods"].each do |neighborhood| %>
+      <li><%= neighborhood %></li>
+      <% end %>
     </ul>
-
     <section id="sidebar">
       <div id="fresh_reviews">
         <h2>Phre$h Reviews</h2>
+        <% @data["fresh_reviews"].each do |review| %>
         <div class="review">
-          <h3>Sal Manelli's</h3>
-          <img src="/assets/images/salpic.jpg" alt="photo of Sal's" height="100" width="150">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div class="review">
-            <h3>Rowdie's</h3>
-            <img src="/assets/images/rowdie.jpg" alt="photo of Rowdie's" height="100" width="150">
-            <p>Lorem suckus cheezus macus maximus amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div class="review">
-            <h3>Corner Hot Dog Stand</h3>
-            <img src="/assets/images/cornerdog.jpg" alt="photo of Cart" height="100" width="150">
-            <p>Lorem ipsum dogus mustard sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-        </section>
-
-        <section id="main">
-          <div id="map">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d451863.81982580334!2d-82.58680844648437!3d27.773239669413496!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1431612800071" width="100%" height="450" frameborder="0" style="border:0"></iframe>
-          </div>
-        </section>
-
+          <h3><%= review["name"] %></h3>
+          <img src="/assets/images/<%= review["image"] %>" alt="photo of <%= review["name"] %>" height="100" width="150">
+          <p><%= review["body"] %></p>
+        </div>
+        <% end %>
       </div>
-
-      <footer>
-        <a href="#">Contact THIS!</a>
-        <p>Built by May 2015 Rails Engineering cohort at The Iron Yard - Tampa/St. Petersburg</p>
-      </footer>
-    </body>
-    </html>
+    </section>
+    <section id="main">
+      <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d451863.81982580334!2d-82.58680844648437!3d27.773239669413496!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1431612800071" width="100%" height="450" frameborder="0" style="border:0"></iframe>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <a href="#">Contact THIS!</a>
+    <p>Built by May 2015 Rails Engineering cohort at The Iron Yard - Tampa/St. Petersburg</p>
+  </footer>
+</body>
+</html>
