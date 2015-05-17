@@ -4,7 +4,7 @@ require 'yaml'
 
 ROOT = File.dirname(__FILE__)
 
-server = WEBrick::HTTPServer.new(:Port => 8000)
+server = WEBrick::HTTPServer.new(:Port => ENV["PORT"])
 
 server.mount '/assets', WEBrick::HTTPServlet::FileHandler, "#{ROOT}/public"
 
