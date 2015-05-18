@@ -1,4 +1,20 @@
 doctype html
 html
   head
-    title Hello, slim!
+    title eat THIS!
+    link href="/assets/style.css" rel="stylesheet" type="text/css" 
+    link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif' rel='stylesheet' type='text/css'
+  body
+    header
+      h1 eat <em>THIS!</em>
+    #container
+      ul
+        - data["neighborhoods"].each do |neighborhood| 
+          li = neighborhood
+      section#sidebar
+        #fresh_reviews
+          h2 Phre$h Reviews
+          - data["fresh_reviews"].each do |review|
+            .review
+              h3 = review["name"]
+              img src="/assets/images/#{review["image"]}" alt="photo of #{review["name"]}" height="100" width="150"         
