@@ -16,7 +16,7 @@ server.mount '/assets', WEBrick::HTTPServlet::FileHandler, "#{ROOT}/public"
 server.mount_proc '/' do |req, res|
   data = YAML.load_file('data.yml')
   template = Tilt.new("#{ROOT}/index.slim")
-  res.body = template.render({:data => data})
+  res.body = template.render(self, {:data => data})
 end
 
 trap 'INT' do
