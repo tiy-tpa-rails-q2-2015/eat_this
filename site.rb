@@ -19,6 +19,10 @@ server.mount_proc '/' do |req, res|
   res.body = template.render(self, {:data => data})
 end
 
+server.mount_proc '/stylesheet.css' do |req, res|
+  res.body = Tilt.new("#{ROOT}/stylesheet.sass").render
+end
+
 trap 'INT' do
   server.shutdown
 end
