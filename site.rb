@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'tilt'
 require 'erb'
 require 'webrick'
 require 'yaml'
@@ -10,8 +13,8 @@ server.mount '/assets', WEBrick::HTTPServlet::FileHandler, "#{ROOT}/public"
 
 server.mount_proc '/' do |req, res|
   @data = YAML.load_file('data.yml')
-  template = ERB.new(File.read("#{ROOT}/index.html.erb"))
-  res.body = template.result
+  template = Tilt.new("#{ROOT}/index.slim")
+  res.body = template.render
 end
 
 trap 'INT' do
