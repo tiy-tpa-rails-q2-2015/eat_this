@@ -19,7 +19,8 @@ html
           h2 Phre$h Reviews
           - data["fresh_reviews"].each do |review|
             .review
-              h3 = review["name"]
+              h3 
+                a href="/review/#{review["id"]}" = review["name"]  
               img src="/assets/images/#{review["image"]}" alt="photo of #{review["name"]}" height="100" width="150"
               p = review["body"]
 
