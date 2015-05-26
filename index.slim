@@ -2,18 +2,18 @@ doctype html
 html
   head
     title eat THIS!
-    link href="/stylesheet.css" rel="stylesheet" type="text/css"
     link href='http://fonts.googleapis.com/css?family=PT+Sans|PT+Serif' rel='stylesheet' type='text/css'
-  
+    link href="/stylesheet.css" rel="stylesheet" type="text/css"
+
   body
     header
       h1 eat <em>THIS!</em>
-    
+
     #container
       ul
-        - data["neighborhoods"].each do |neighborhood| 
+        - data["neighborhoods"].each do |neighborhood|
           li = neighborhood
-      
+
       section#sidebar
         #fresh_reviews
           h2 Phre$h Reviews
@@ -21,8 +21,8 @@ html
             .review
               h3 = review["name"]
               img src="/assets/images/#{review["image"]}" alt="photo of #{review["name"]}" height="100" width="150"
-              p = review["body"] 
-      
+              p = review["body"]
+
       section#main
         #map
           iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d451863.81982580334!2d-82.58680844648437!3d27.773239669413496!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1431612800071" width="100%" height="450" frameborder="0" style="border:0"
