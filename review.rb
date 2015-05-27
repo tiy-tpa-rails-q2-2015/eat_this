@@ -25,4 +25,13 @@ class Review
   def image_url
     "/assets/images/#{self.image}"
   end
+
+  def self.find(id)
+    Review.all.find { |review| review.id == id }
+  end
+
+  def ==(other)
+    self.id == other.id
+  end
+
 end
