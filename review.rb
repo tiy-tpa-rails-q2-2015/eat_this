@@ -5,8 +5,8 @@ class Review
   attr_accessor :name, :id, :body, :image
 
   def self.all
-    data = YAML.load_file('./data.yml')
-    data['fresh_reviews'].map do | datum |
+    data = YAML.load_file('./reviews.yml')
+    data.map do | datum |
       Review.new(datum)
     end
   end
@@ -16,5 +16,13 @@ class Review
     @id = attributes['id']
     @body = attributes['body']
     @image = attributes['image']
+  end
+
+  def url
+    "/review/#{self.id}"
+  end
+
+  def image_url
+    "/assets/images/#{self.image}"
   end
 end

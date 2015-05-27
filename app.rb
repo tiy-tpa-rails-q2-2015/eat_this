@@ -29,8 +29,8 @@ class App
 
     server.mount_proc '/review/' do |req, res|
       id = req.path.match(/\/review\/(\d+)/)[1].to_i
-      data = YAML.load_file('data.yml')
-      review = data["fresh_reviews"].find { |review| review["id"] == id }
+      
+      review = Review.find(id)
 
       template = Tilt.new("#{ROOT}/review.slim")
       res.body = template.render(self, { :review => review })

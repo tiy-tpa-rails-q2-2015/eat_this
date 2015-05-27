@@ -20,4 +20,8 @@ class ReviewTest < MiniTest::Test
   def test_first_review_has_name
     assert_equal "Sal Manelli's", Review.all.first.name
   end
+
+  def test_first_review_has_url
+    assert_equal "/review/1", Review.all.first.url
+  end
 end
