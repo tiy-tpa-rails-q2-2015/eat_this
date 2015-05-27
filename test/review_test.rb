@@ -6,7 +6,7 @@ require 'review'
 class ReviewTest < MiniTest::Test
 
   def setup
-    @data = YAML.load_file('./data.yml')['fresh_reviews']
+    @data = YAML.load_file('./reviews.yml')
     @review = Review.all.first
   end
 
@@ -28,5 +28,33 @@ class ReviewTest < MiniTest::Test
 
   def test_finding_reviews
     assert_equal @review, Review.find(1)
+  end
+
+  def test_saving_changes_to_a_review
+    new_name = "Rowdie's Den"
+
+    review = Review.find(2)
+
+    review.name = new_name
+    review.save
+
+    assert_equal new_name, Review.find(2).name
+
+    review.name = "Rowdie's"
+    review.save
+  end
+
+  def test_creating_a_new_review
+    review = Review.new({
+                            "name" => "Publix",
+                            "image" => "publix.jpg",
+                            "body" => "Their subs are the best!"
+                        })
+    saved = review.save
+    assert_equal "Publix", Review.find(saved.id).name
+  end
+
+  def teardown
+    `git checkout reviews.yml`
   end
 end
