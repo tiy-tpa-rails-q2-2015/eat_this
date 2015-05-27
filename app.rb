@@ -7,6 +7,8 @@ require 'yaml'
 require 'slim'
 require 'tilt/sass'
 
+require './review'
+
 class App
   ROOT = File.dirname(__FILE__)
   PORT = ENV["PORT"] || 8000
@@ -17,9 +19,8 @@ class App
     server.mount '/assets', WEBrick::HTTPServlet::FileHandler, "#{ROOT}/public"
 
     server.mount_proc '/' do |req, res|
-      data = YAML.load_file('data.yml')
       template = Tilt.new("#{ROOT}/index.slim")
-      res.body = template.render(self, {:data => data})
+      res.body = template.render(self, {:reviews => Review.all})
     end
 
     server.mount_proc '/stylesheet.css' do |req, res|

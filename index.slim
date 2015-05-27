@@ -11,18 +11,18 @@ html
 
     #container
       ul
-        - data["neighborhoods"].each do |neighborhood|
-          li = neighborhood
+        /- data["neighborhoods"].each do |neighborhood|
+        /  li = neighborhood
 
       section#sidebar
         #fresh_reviews
           h2 Phre$h Reviews
-          - data["fresh_reviews"].each do |review|
+          - reviews.each do |review|
             .review
               h3 
-                a href="/review/#{review["id"]}" = review["name"]  
-              img src="/assets/images/#{review["image"]}" alt="photo of #{review["name"]}" height="100" width="150"
-              p = review["body"]
+                 = review.name
+              img src="/assets/images/#{review.image}" alt="photo of #{review.name}" height="100" width="150"
+              p = review.body
 
       section#main
         #map
